@@ -4,7 +4,10 @@ import { useMemo } from "react"
 import { useSelector } from "@/state/hook"
 import { themeSettings } from "@/theme"
 import {PaletteMode} from "@mui/material"
-
+import {Routes, Route} from "react-router-dom"
+import Dashboard from "@/pages/Dashboard"
+import Layout from "@/pages/layouts"
+import { Navigate } from "react-router-dom"
 const App = () => {
 
   const mode = useSelector((state) => state.global.mode);
@@ -12,7 +15,11 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <div>App</div>
+      <Routes>
+        <Route  element={<Layout />} />
+        <Route path="/" element={<Navigate to ="/dashboard" replace />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Routes>
     </ThemeProvider>
   )
 }
