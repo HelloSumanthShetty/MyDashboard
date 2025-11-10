@@ -25,12 +25,12 @@ app.use("/api/management", managementRouter);
 app.use("/api/sales", salesRouter);
 const PORT = process.env.PORT || 5000;
 const MONGO_URI = process.env.MONGO_URI || "";
-app.listen(PORT, async () => {
+app.listen(PORT,  () => {
     if (!MONGO_URI) {
         console.error("MONGO_URI is not defined in environment variables");
     }
     else {
-        await connectDB(MONGO_URI);
+     connectDB(MONGO_URI);
     }
     console.log(`Server is running on port ${PORT}`);
 });
