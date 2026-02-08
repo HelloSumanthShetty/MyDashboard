@@ -119,7 +119,7 @@ const SideBar = ({
     setActive(pathname.substring(1));
   }, [pathname]);
  
-
+console.log(user)
   return (
     <Box component="nav">
       {isSidebarOpen && (
@@ -148,17 +148,17 @@ const SideBar = ({
                   </Typography>
                 </Box>
                 {!isNonMobile && (
-                  <IconButton onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
+                  <IconButton sx={{transition: "transform 1.0s ease-in-out"}} onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
                     <ChevronLeft />
                   </IconButton>
                 )}
               </FlexBetween>
             </Box>
-            <List>
+            <List  >
               {navItems.map(({ text, icon }) => {
                 if (!icon) {
                   return (
-                    <Typography key={text} sx={{ m: "2.25rem 0 1rem 3rem" }}>
+                    <Typography key={text} sx={{ m: "1.25rem 0 1rem 3rem" }}>
                       {text}
                     </Typography>
                   );
@@ -166,7 +166,7 @@ const SideBar = ({
                 const lcText = text.toLowerCase();
 
                 return (
-                  <ListItem key={text} disablePadding>
+                  <ListItem key={text} sx={{}} disablePadding>
                     <ListItemButton
                       onClick={() => {
                         navigate(`/${lcText}`);
@@ -205,7 +205,7 @@ const SideBar = ({
             </List>
           </Box>
 
-          <Box position="absolute" bottom="2rem">
+         <Box  mb="1rem">
             <Divider />
             <FlexBetween textTransform="none" gap="1rem" m="1.5rem 2rem 0 3rem">
               <Box

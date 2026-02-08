@@ -8,8 +8,8 @@ import managementRouter from "./routes/management.router.js"
 import salesRouter from "./routes/sales.router.js"
 import connectDB from './db/connect.js';
 import dotenv from "dotenv";
-// import User from './models/user.model.js';
-// import { dataUser } from "./data/index.js";
+import User from './models/user.model.js';
+import { dataUser } from "./data/index.js";
 dotenv.config();
 const app = express();
 app.use(cors());
@@ -36,7 +36,7 @@ app.listen(PORT, async () => {
     else {
      await connectDB(MONGO_URI);
         
-          //await User.insertMany(dataUser);
+        //   await User.insertMany(dataUser);
     }
     console.log(`Server is running on port ${PORT}`);
 }
