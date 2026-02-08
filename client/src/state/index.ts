@@ -2,11 +2,13 @@ import {createSlice} from '@reduxjs/toolkit';
 import { PaletteMode } from '@mui/material';
 
 type globalMode ={
-    mode : PaletteMode
+    mode : PaletteMode,
+    userId: string
 }
 
 const initialState : globalMode={
-    mode: "dark"
+    mode: "dark",
+    userId: "63701cc1f03239b7f700000e",
 };
 
 export const globalSlice= createSlice({

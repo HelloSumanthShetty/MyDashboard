@@ -6,18 +6,22 @@ import { useState } from "react";
 import SideBar from "@/components/SideBar";
 const Layout = () => {
   const isNonMobile = useMediaQuery("(min-width: 600px)");
-  const [isSideBarOpen,setIsSideBarOpen] = useState(true);
+  const [isSidebarOpen,setIsSidebarOpen] = useState(true);
+  console.log("Layout rendered");
   return (
     <Box display={isNonMobile ? "flex" : "block"} width="100%" height="100%">
       <SideBar
+      user={{ name: "John Doe", occupation: "Developer" }}
   isNonMobile={isNonMobile}
   drawerWidth="250px"
-  isSidebarOpen={isSideBarOpen}
-  setIsSidebarOpen={setIsSideBarOpen}
+  isSidebarOpen={isSidebarOpen}
+  setIsSidebarOpen={setIsSidebarOpen}
 />
-
       <Box>
-        <Navbar />
+        <Navbar 
+        isSidebarOpen = {isSidebarOpen}
+        setIsSidebarOpen={setIsSidebarOpen}
+        />
         <Outlet />
       </Box>
     </Box>
