@@ -7,6 +7,7 @@ import {PaletteMode} from "@mui/material"
 import {Routes, Route} from "react-router-dom"
 import Dashboard from "@/pages/Dashboard"
 import Layout from "@/pages/layouts"
+import Products from "./pages/products"
 import { Navigate } from "react-router-dom"
 const App = () => {
 
@@ -19,6 +20,7 @@ const App = () => {
         <Route  element={<Layout />} >
         <Route path="/" element={<Navigate to ="/dashboard" replace />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/products" element={<Products />} />
         </Route>
       </Routes>
     </ThemeProvider>
