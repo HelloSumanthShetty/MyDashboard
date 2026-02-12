@@ -119,7 +119,7 @@ const SideBar = ({
     setActive(pathname.substring(1));
   }, [pathname]);
  
-console.log(user)
+// console.log(user)
   return (
     <Box component="nav">
       {isSidebarOpen && (

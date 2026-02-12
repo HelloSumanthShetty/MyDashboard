@@ -6,8 +6,10 @@ import { themeSettings } from "@/theme"
 import {PaletteMode} from "@mui/material"
 import {Routes, Route} from "react-router-dom"
 import Dashboard from "@/pages/Dashboard"
+import Customers from "@/pages/Customers"
 import Layout from "@/pages/layouts"
 import Products from "./pages/products"
+import Transaction from "@/pages/Transaction"
 import { Navigate } from "react-router-dom"
 const App = () => {
 
@@ -21,6 +23,8 @@ const App = () => {
         <Route path="/" element={<Navigate to ="/dashboard" replace />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/products" element={<Products />} />
+        <Route path="/customers" element={<Customers />} />
+        <Route path="/transactions" element={<Transaction />} />
         </Route>
       </Routes>
     </ThemeProvider>

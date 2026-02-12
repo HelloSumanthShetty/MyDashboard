@@ -8,9 +8,11 @@ import managementRouter from "./routes/management.router.js"
 import salesRouter from "./routes/sales.router.js"
 import connectDB from './db/connect.js';
 import dotenv from "dotenv";
+// import User from './models/user.model.js';
 // import Product from './models/product.model.js';
 // import ProductStat from './models/productStat.model.js';
-import { dataUser,dataProduct, dataProductStat } from "./data/index.js";
+import Transaction from './models/Transaction.model.js';
+import { dataUser,dataProduct, dataProductStat,dataTransaction } from "./data/index.js";
 dotenv.config();
 const app = express();
 app.use(cors());
@@ -38,7 +40,8 @@ app.listen(PORT, async () => {
      await connectDB(MONGO_URI);
         // await Product.insertMany(dataProduct);
         // await ProductStat.insertMany(dataProductStat)
-        //   await User.insertMany(dataUser);
+        //    await User.insertMany(dataUser);
+            // await Transaction.insertMany(dataTransaction);
     }
     console.log(`Server is running on port ${PORT}`);
 }
