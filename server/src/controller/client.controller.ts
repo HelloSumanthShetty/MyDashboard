@@ -49,14 +49,14 @@ export const getTransaction = async(req: Request, res: Response) =>{
 
     let sortFormatted = {};
 
-    if (typeof sort === "string" && sort !== "[object Object]") {
+    if (typeof sort === "string" && sort.length > 0 && sort !== "null" && sort !== "[object Object]") {
        sortFormatted = generateSort(sort);
     }
     const searchFilter = search 
   ? {
       $or: [
-        { cost: { $regex: search, $options: "i" } },
-        { userId: { $regex: search, $options: "i" } },
+        { cost: { $regex: String(search), $options: "i" } },
+        { userId: { $regex: String(search), $options: "i" } },
         // Add { name: { $regex: search, $options: "i" } } here if the field exists
       ],
     } 

@@ -21,7 +21,7 @@ export const api = createApi({
       query:({page, pageSize, search, sort}) => ({
          url:"api/client/transactions",
          method: "GET",
-         params:{page, pageSize, search, sort }
+         params:{page: page + 1, pageSize, search : search ? search : "", sort: sort?.length ? JSON.stringify(sort[0]) : null }
       }),
       providesTags:["Transactions"]
      })
