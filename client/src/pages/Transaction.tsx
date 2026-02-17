@@ -69,6 +69,7 @@ const Transaction = (props: Props) => {
                 columns={columns}
                rowCount={data?.total ?? 0}
                 pagination
+                pageSizeOptions={[20, 50, 100]}
                 paginationModel={{ page, pageSize }}
                //  onPaginationModelChange={setPaginationModel}
                 paginationMode="server"

@@ -3,7 +3,7 @@ import Product from "../models/product.model.js";
 import ProductStat from "../models/productStat.model.js";
 import User from "../models/user.model.js";
 import Transaction from "../models/Transaction.model.js";
-
+import { getCountryISO3 } from 'ts-country-iso-2-to-3';
 
 export const getProduct = async(req: Request, res: Response) => {
  try {
@@ -43,14 +43,15 @@ export const getTransaction = async(req: Request, res: Response) =>{
     const generateSort = (sortValue: any) => {
        const sortParse = JSON.parse(sortValue);
        return {
-          [sortParse.field]: sortParse.sort === "asc" ? 1 : -1
+          [sortParse[0]?.field]: sortParse[0]?.sort === "asc" ? 1 : -1
        };
     };
 
     let sortFormatted = {};
 
-    if (typeof sort === "string" && sort.length > 0 && sort !== "null" && sort !== "[object Object]") {
+    if (sort) {
        sortFormatted = generateSort(sort);
+       console.log("sortFormatted", sortFormatted);
     }
     const searchFilter = search 
   ? {
@@ -68,4 +69,31 @@ export const getTransaction = async(req: Request, res: Response) =>{
  } catch (error : any) {
     res.status(500).json({succuss : false, message : error.message})
  }
+}
+export const getGeography = async(req: Request, res: Response) => {
+   try {
+      const allUser = await User.find()
+     const mappedLocation = allUser.reduce((acc, country) => {
+  const countryISO3 = getCountryISO3(String(country));
+  if (!acc[countryISO3]) {
+    acc[countryISO3] = 0;
+  }
+
+  acc[countryISO3]++;
+
+  return acc;
+}, {} as Record<string, number>);
+const formattedLocation = Object.entries(mappedLocation).map(
+  ([country, count]) => {
+    return {
+      id: country,
+      value: count
+    };
+  }
+);
+res.status(200).json(formattedLocation)
+
+   } catch (error) {
+      
+   } 
 }
