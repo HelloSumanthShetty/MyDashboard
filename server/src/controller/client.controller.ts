@@ -72,13 +72,12 @@ export const getTransaction = async(req: Request, res: Response) =>{
 }
 export const getGeography = async(req: Request, res: Response) => {
    try {
-      const allUser = await User.find()
+      const allUser = await User.find().select("country _id")
      const mappedLocation = allUser.reduce((acc, country) => {
-  const countryISO3 = getCountryISO3(String(country));
+  const countryISO3 = getCountryISO3(String(country.country));
   if (!acc[countryISO3]) {
     acc[countryISO3] = 0;
   }
-
   acc[countryISO3]++;
 
   return acc;
@@ -93,7 +92,7 @@ const formattedLocation = Object.entries(mappedLocation).map(
 );
 res.status(200).json(formattedLocation)
 
-   } catch (error) {
-      
-   } 
+   } catch (error : any) {
+        res.status(500).json({succuss : false, message : error.message})
+ }
 }

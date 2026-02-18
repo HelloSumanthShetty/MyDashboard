@@ -13,11 +13,11 @@ const Header = ({title, subtitle}: Props) => {
         variant="h2"
         color={theme.palette.secondary[100]}
         fontWeight="bold"
-        sx={{ mb: "5px" }}
+        sx={{ mb: "5px", m:"10px" }}
       >
         {title}
       </Typography>
-      <Typography variant="h5" color={theme.palette.secondary[300]}>
+      <Typography variant="h5" sx={{m:"10px"}} color={theme.palette.secondary[300]}>
         {subtitle}
       </Typography>
     </Box>

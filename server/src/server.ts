@@ -11,8 +11,9 @@ import dotenv from "dotenv";
 // import User from './models/user.model.js';
 // import Product from './models/product.model.js';
 // import ProductStat from './models/productStat.model.js';
+import OverallStat from './models/overallStat.js';
 import Transaction from './models/Transaction.model.js';
-import { dataUser,dataProduct, dataProductStat,dataTransaction } from "./data/index.js";
+import { dataUser,dataProduct, dataProductStat,dataTransaction,dataOverallStat } from "./data/index.js";
 dotenv.config();
 const app = express();
 app.use(cors());
@@ -41,7 +42,7 @@ app.listen(PORT, async () => {
         // await Product.insertMany(dataProduct);
         // await ProductStat.insertMany(dataProductStat)
         //    await User.insertMany(dataUser);
-            // await Transaction.insertMany(dataTransaction);
+            //  await OverallStat.insertMany(dataOverallStat);
     }
     console.log(`Server is running on port ${PORT}`);
 }
